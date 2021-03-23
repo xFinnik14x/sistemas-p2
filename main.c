@@ -67,6 +67,33 @@ static void listar_directorio (const char *dirname) {
 
 }
 
+static void listar_atributos_del_archivo (const char *filename, bool all) {
+
+    // atributos del archivo de nombres
+    struct stat filestat = { 0 };
+    (void) stat (filename, &filestat);
+    if (all) {
+        (void) printf ("Atributos del archivo %s: \n", filename);
+        (void) printf ("ID of device containing file: %ld\n", filestat.st_dev);
+        (void) printf ("Inode number: %ld\n", filestat.st_ino);
+        (void) printf ("File type and mode: %d\n", filestat.st_mode);
+        (void) printf ("Number of hard links: %ld\n", filestat.st_nlink);
+        (void) printf ("User ID of owner: %d\n", filestat.st_uid);
+        (void) printf ("Group ID of owner: %d\n", filestat.st_gid);
+        (void) printf ("Device ID (if special file): %ld\n", filestat.st_rdev);
+        (void) printf ("Total size, in bytes: %ld\n", filestat.st_size);
+        (void) printf ("Block size for filesystem I/O: %ld\n", filestat.st_blksize);
+        (void) printf ("Number of 512B blocks allocated: %ld\n\n", filestat.st_blocks);
+    }
+
+    else {
+        (void) printf ("Atributos del archivo %s: \n", filename);
+        (void) printf ("Inode number: %ld\n\n", filestat.st_ino);
+    }
+
+}
+
+
 int main (int argc, const char **argv) {
 
 	printf ("Hola mundo!\n\n");
