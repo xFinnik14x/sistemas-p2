@@ -93,6 +93,31 @@ static void listar_atributos_del_archivo (const char *filename, bool all) {
 
 }
 
+static unsigned int crear_archivo_nombres (const char *filename) {
+
+    unsigned int retval = 1;
+
+    FILE *nombres = fopen (filename, "w+");
+    if (nombres) {
+        (void) printf ("Se creo el archivo %s\n", filename);
+
+        size_t wrote = fwrite (nuestros_nombres, strlen (nuestros_nombres), 1, nombres);
+        if (wrote) {
+            (void) printf ("Se escribireron %lu elementos en %s\n\n!", wrote, filename);
+
+            retval = 0;
+        }
+
+        (void) fclose (nombres);
+    }
+
+    else {
+        (void) printf ("Error %d al crear el archivo %s!\n\n", errno, filename);
+    }
+
+    return retval;
+
+}
 
 int main (int argc, const char **argv) {
 
