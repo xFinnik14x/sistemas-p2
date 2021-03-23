@@ -5,5 +5,5 @@ Integrantes:
     Ricardo Whaibe Martinez  
     Mariana Peña Hernandez  
     Maximiliano Escobar Valencia  
-    Qbos  
+    Garciacano Garcia Gabriel  
     Uriel Castañeda Gomez  
