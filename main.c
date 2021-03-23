@@ -119,6 +119,23 @@ static unsigned int crear_archivo_nombres (const char *filename) {
 
 }
 
+static void crear_symbolic_link (const char *filename) {
+
+    // crear symbolic link
+    const char *simbolico = { "simbolico" };
+
+    (void) printf ("Creando link simbolico a %s...\n", filename);
+
+    if (!symlink (filename, simbolico)) {
+        (void) printf ("Link simbolico %s a %s creado!\n", simbolico, filename);
+    }
+
+    else {
+        (void) printf ("Error %d al crear link simbolico!\n", errno);
+    }
+
+}
+
 int main (int argc, const char **argv) {
 
 	printf ("Hola mundo!\n\n");
